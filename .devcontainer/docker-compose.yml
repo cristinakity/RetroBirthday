@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sleep infinity
+    volumes:
+      - ../..:/workspaces:cached
+    network_mode: service:mongodb
+
+  mongodb:
+    image: mongo:8.0
+    ports:
+      - "27018:27018"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:

@@ -1,0 +1,6 @@
+# ignore all files in the backend directory
+**/backend_no/
+
+**/*.Identifier
+
+**/node_modules/
