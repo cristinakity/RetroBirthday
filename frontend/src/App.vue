@@ -10,7 +10,7 @@
       <h2>Game from your birth date:</h2>
       <h1 v-if="game.title">{{ game.title }}</h1>
       <p v-if="game.release_date">Release Date: {{ game.release_date }}</p>
-      <p v-if="game.description">Release Date: {{ game.description }}</p>
+      <p v-if="game.description">Description: {{ game.description }}</p>
     </div>
     <div v-if="found == false">
       <p>No game found for this date.</p>
