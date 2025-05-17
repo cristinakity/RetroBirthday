@@ -2,14 +2,14 @@
 
 ## Overview
 
-RetroBirthDay is a web application that allows users to input their birth date and receive information about retro games that were released on that date. The application is built using a Flask backend with a MongoDB database and a Vue.js frontend.
+RetroBirthDay is a web application that allows users to input their birth date and receive information about retro games that were released on that date. The application is built using a FastAPI backend with a MongoDB database and a Vue.js frontend.
 
 ## Project Structure
 
 The project is organized into the following main directories:
 
 - **.devcontainer**: Contains configuration files for the development container, including the Dockerfile and devcontainer.json.
-- **backend**: Contains the Flask backend application, including the main application file, controllers, models, views, and requirements.
+- **backend**: Contains the FastAPI backend application, including the main application file, controllers, models, views, and requirements.
 - **frontend**: Contains the Vue.js frontend application, including the main HTML file, Vue components, and package configuration.
 - **.gitignore**: Specifies files and directories to be ignored by Git.
 - **README.md**: This file provides an overview and setup instructions for the project.
@@ -27,7 +27,7 @@ To set up the development environment, ensure you have Docker installed. Open th
    ```
    pip install -r requirements.txt
    ```
-3. Start the Fastapp:
+3. Start the FastAPI app:
    ```
    uvicorn main:app --reload --host 0.0.0.0 --port 8000
    ```
