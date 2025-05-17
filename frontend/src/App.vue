@@ -8,7 +8,12 @@
     </form>
     <div v-if="game">
       <h2>Game from your birth date:</h2>
-      <p>{{ game }}</p>
+      <h1 v-if="game.title">{{ game.title }}</h1>
+      <p v-if="game.release_date">Release Date: {{ game.release_date }}</p>
+      <p v-if="game.description">Release Date: {{ game.description }}</p>
+    </div>
+    <div v-if="found == false">
+      <p>No game found for this date.</p>
     </div>
   </div>
 </template>
@@ -19,14 +24,24 @@ export default {
     return {
       birthdate: '',
       game: null,
+      found: null
     };
   },
   methods: {
     async fetchGame() {
       try {
-        const response = await fetch(`http://localhost:5000/api/game?date=${this.birthdate}`);
+        const response = await fetch(`http://localhost:8000/games?date=${this.birthdate}`);
         const data = await response.json();
-        this.game = data.game;
+        if (!response.ok) {
+          if(response.status === 404) {
+            this.game = null;
+            this.found = false;
+            return;
+          }
+          throw new Error(data.message || 'Failed to fetch game');
+        }
+        this.game = data;
+        this.found = true;
       } catch (error) {
         console.error('Error fetching game:', error);
       }
